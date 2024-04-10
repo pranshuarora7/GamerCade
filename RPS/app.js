@@ -81,8 +81,12 @@ function scoreboard() {
     winnerdisplay.innerHTML = winner
 }
 function restart() {
-    if (userScore == target || compScore == target) {
-        alert("GAME RESTARTED")
+    if (userScore == target) {
+        alert("GAME RESTARTED, You Won!!")
+        window.location.reload();
+    }
+    else if (compScore == target) {
+        alert("GAME RESTARTED, Computer Won!!")
         window.location.reload();
     }
 }

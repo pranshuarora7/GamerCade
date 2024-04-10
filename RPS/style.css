@@ -1,3 +1,42 @@
 body {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.header {
+    background-color: rgb(221, 151, 60);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.content {
+    background-color: aqua;
+    padding: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.first h3 {
+    font-size: 35px;
+}
+
+.first button {
+    border-radius: 25%;
+    font-size: 15px;
+    margin: 3px;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+}
+
+.second span {
+    font-size: 25px;
+}
+
+.third {
+    font-size: 25px;
 }

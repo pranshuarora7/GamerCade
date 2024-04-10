@@ -10,23 +10,36 @@
 
 <body>
     <div class="header">
-        <h1>Welcome! Welcome! Welcome!</h1>
+        <h2>Welcome! Welcome! Welcome!</h2>
         <h1>Let's Play Rock Paper Scissors</h1>
     </div>
-    <h2>Computer's Choice: <span id="computer-choice"></span></h2>
-    <h2>User's Choice: <span id="user-choice"></span></h2>
-    <h2>Result: <span id="result"></span></h2>
+    <div class="content">
+        <div class="first">
+            <h3>Choose an option:-</h3>
+            <button className="choice" id="rock">Rock</button>
+            <button className="choice" id="paper">Paper</button>
+            <button className="choice" id="scissors">Scissors</button>
+        </div>
 
-    <button className="choice" id="rock">Rock</button>
-    <button className="choice" id="paper">Paper</button>
-    <button className="choice" id="scissors">Scissors</button>
+        <div class="second">
+            <h2>User's Choice: <span id="user-choice"></span></h2>
+            <h2>Computer's Choice: <span id="computer-choice"></span></h2>
+            <h2>Result: <span id="result"></span></h2>
+        </div>
 
-    <div class="score">
-        <p> User Score :<span id="user-score"></span> </p>
-        <p> Computer Score :<span id="computer-score"></span> </p>
-        Winner : <span id="winner"></span>
+        <div class="third">
+            <div class="score">
+                <p> User Score :<span id="user-score"></span> </p>
+                <p> Computer Score :<span id="computer-score"></span> </p>
+                Winner : <span id="winner"></span>
+            </div>
+        </div>
     </div>
+    <div class="footer">
+        <h2>Thank you for playing!</h2>
+        Copyright &#169 GamerCade | All rights reserved
 
+    </div>
     <script src="app.js" charset="UTF-8"></script>
 </body>
 
