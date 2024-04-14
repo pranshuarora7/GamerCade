@@ -1,92 +1,87 @@
-const computerChoiceDisplay = document.getElementById('computer-choice')
-const userChoiceDisplay = document.getElementById('user-choice')
-const resultDisplay = document.getElementById('result')
-const winnerdisplay = document.getElementById('winner')
-const possibleChoices = document.querySelectorAll('button')
-const userscoreDisplay = document.getElementById('user-score')
-const compscoreDisplay = document.getElementById('computer-score')
+// Selecting elements from the HTML
+const userChoiceDisplay = document.getElementById('user-choice');
+const computerChoiceDisplay = document.getElementById('computer-choice');
+const resultDisplay = document.getElementById('result');
+const winnerDisplay = document.getElementById('winner');
+const userScoreDisplay = document.getElementById('user-score');
+const computerScoreDisplay = document.getElementById('computer-score');
+const restartButton = document.getElementById('restart');
 
+// Define choices and initial scores
+const choices = ['rock', 'paper', 'scissors'];
+let userScore = 0;
+let computerScore = 0;
 
-let userChoice
-let computerChoice
-let result
-
-possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', makeChoice))
-
-function makeChoice(e) {
-    userChoice = e.target.id
-    userChoiceDisplay.innerHTML = userChoice
-    generateComputerChoice()
-    getResult()
-    scoreboard()
-    restart()
-}
-
-function generateComputerChoice() {
-    const choices = ['rock', 'paper', 'scissors']
-    const randomNumber = Math.floor(Math.random() * choices.length)
-    computerChoice = choices[randomNumber]
-    computerChoiceDisplay.innerHTML = computerChoice
-}
-
-function getResult() {
-    const winConditions = {
-        'rock': 'scissors',
-        'paper': 'rock',
-        'scissors': 'paper'
-    }
-
-    if (computerChoice === userChoice) {
-        results = 0
-    } else if (winConditions[userChoice] === computerChoice) {
-        results = 1
+// Function to determine the result of the game
+function determineResult(userChoice, computerChoice) {
+    if (userChoice === computerChoice) {
+        return 'Tie';
+    } else if (
+        (userChoice === 'rock' && computerChoice === 'scissors') ||
+        (userChoice === 'paper' && computerChoice === 'rock') ||
+        (userChoice === 'scissors' && computerChoice === 'paper')
+    ) {
+        return 'You Win';
     } else {
-        results = -1
-    }
-    displayResult()
-    resultDisplay.innerHTML = result
-}
-function displayResult() {
-    if (results == 0) {
-        result = "Tie"
-    }
-    else if (results == 1) {
-        result = "You Win"
-    }
-    else {
-        result = "You Lose"
+        return 'You Lose';
     }
 }
-let userScore = 0
-let compScore = 0
-let target = 5
-function scoreboard() {
-    if (results == 1) {
-        userScore += 1;
+
+// Function to update the scores and display the winner
+function updateScoresAndWinner(userChoice, computerChoice) {
+    const result = determineResult(userChoice, computerChoice);
+    if (result === 'You Win') {
+        userScore++;
+    } else if (result === 'You Lose') {
+        computerScore++;
     }
-    else {
-        compScore += 1;
+    userScoreDisplay.textContent = userScore;
+    computerScoreDisplay.textContent = computerScore;
+    resultDisplay.textContent = result;
+
+    if (userScore === 5 || computerScore === 5) {
+        // Display final scores
+        winnerDisplay.textContent = `Final Scores - User: ${userScore}, Computer: ${computerScore}`;
+        // Disable button clicks
+        document.querySelectorAll('.choice').forEach(button => {
+            button.disabled = true;
+        });
     }
-    userscoreDisplay.innerHTML = userScore
-    compscoreDisplay.innerHTML = compScore
-    if (userScore == target) {
-        winner = "Congratulations! You Won"
-    }
-    else if (compScore == target) {
-        winner = "The Computer has caught up to you! Try again."
-    }
-    else {
-        winner = ""
-    }
-    winnerdisplay.innerHTML = winner
-}
-function restart() {
-    if (userScore == target) {
-        alert("GAME RESTARTED, You Won!!")
-        window.location.reload();
-    }
-    else if (compScore == target) {
-        alert("GAME RESTARTED, Computer Won!!")
-        window.location.reload();
+
+    if (userScore === 5) {
+        winnerDisplay.textContent += ' - Congratulations! You Won';
+    } else if (computerScore === 5) {
+        winnerDisplay.textContent += ' - The Computer has caught up to you! Try again.';
     }
 }
+
+// Add click event listeners to all buttons
+document.querySelectorAll('.choice').forEach(button => {
+    button.addEventListener('click', () => {
+        // Get user choice and generate computer choice
+        const userChoice = button.id;
+        const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+        // Display choices
+        userChoiceDisplay.textContent = userChoice;
+        computerChoiceDisplay.textContent = computerChoice;
+
+        // Update scores and display winner
+        updateScoresAndWinner(userChoice, computerChoice);
+    });
+});
+
+// Add click event listener to restart button
+restartButton.addEventListener('click', () => {
+    // Reset scores and messages
+    userScore = 0;
+    computerScore = 0;
+    userScoreDisplay.textContent = userScore;
+    computerScoreDisplay.textContent = computerScore;
+    resultDisplay.textContent = '';
+    winnerDisplay.textContent = '';
+    // Enable button clicks
+    document.querySelectorAll('.choice').forEach(button => {
+        button.disabled = false;
+    });
+});
