@@ -41,7 +41,7 @@ function updateScoresAndWinner(userChoice, computerChoice) {
 
     if (userScore === 5 || computerScore === 5) {
         // Display final scores
-        winnerDisplay.textContent = `Final Scores - User: ${userScore}, Computer: ${computerScore}`;
+        winnerDisplay.textContent = `You: ${userScore}, Computer: ${computerScore}`;
         // Disable button clicks
         document.querySelectorAll('.choice').forEach(button => {
             button.disabled = true;
@@ -51,7 +51,7 @@ function updateScoresAndWinner(userChoice, computerChoice) {
     if (userScore === 5) {
         winnerDisplay.textContent += ' - Congratulations! You Won';
     } else if (computerScore === 5) {
-        winnerDisplay.textContent += ' - The Computer has caught up to you! Try again.';
+        winnerDisplay.textContent += ' - The Computer won! Try again.';
     }
 }
 

@@ -1,42 +1,109 @@
 body {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    font-family: Arial, sans-serif;
     margin: 0;
+    background-color: #f0f0f0;
+    color: #333;
 }
 
 .header {
-    background-color: rgb(221, 151, 60);
-    font-family: 'Courier New', Courier, monospace;
+    background-color: #ffcc66;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+.header h2 {
+    margin: 5px 0;
+    font-size: 24px;
 }
 
 .content {
-    background-color: aqua;
-    padding: 75px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 50px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.first h3 {
-    font-size: 35px;
+.choice {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s;
 }
 
-.first button {
-    border-radius: 25%;
-    font-size: 15px;
-    margin: 3px;
-    padding: 10px;
-    background-color: blue;
-    color: white;
+.choice:hover {
+    background-color: #0056b3;
 }
 
-.second span {
-    font-size: 25px;
+.score {
+    font-size: 20px;
 }
 
-.third {
-    font-size: 25px;
+.score p {
+    margin: 5px 0;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer a:hover {
+    color: #ffcc66;
+}
+
+#restart {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+#restart:hover {
+    background-color: #218838;
+}
+
+@media only screen and (min-width: 768px) {
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .choice {
+        padding: 12px 24px;
+        margin: 10px;
+        animation: pulse 1s infinite alternate;
+    }
+
+    #restart {
+        padding: 12px 24px;
+        margin: 10px;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        100% {
+            transform: scale(1.1);
+        }
+    }
 }
