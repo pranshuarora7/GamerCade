@@ -6,11 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch A Sketch</title>
     <link rel="stylesheet" href="eas.css">
-    <script src="eas.js" defer></script>
 </head>
 
 <body>
+    <div id="controls">
+        <label for="gridSize">Grid Size:</label>
+        <input type="number" id="gridSize" min="1" max="25" value="16">
+        <button id="newGridButton">New Grid</button>
+    </div>
     <div id="container"></div>
+    <script src="eas.js"></script>
 </body>
 
 </html>
